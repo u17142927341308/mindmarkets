@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mind Markets — Pixel Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>🧠📈 Mind Markets — Pixel Lab</h1>
+    <div class="sub">Emotionen als Marktregeln • spiele mit den Parametern</div>
+  </header>
+
+  <main class="grid">
+    <section class="panel controls">
+      <h2>Regler</h2>
+      <div class="control">
+        <label>Agenten (N): <span id="labelN">400</span></label>
+        <input id="N" type="range" min="50" max="1000" step="50" value="400">
+      </div>
+      <div class="control">
+        <label>Herding h: <span id="labelH">0.50</span></label>
+        <input id="h" type="range" min="0" max="1" step="0.01" value="0.50">
+      </div>
+      <div class="control">
+        <label>Risikoaversion ρ: <span id="labelRho">0.60</span></label>
+        <input id="rho" type="range" min="0.05" max="1.5" step="0.01" value="0.60">
+      </div>
+      <div class="control">
+        <label>Aktivität a: <span id="labelA">1.00</span></label>
+        <input id="a" type="range" min="0.2" max="2.0" step="0.01" value="1.00">
+      </div>
+      <div class="control">
+        <label>Preisimpact κ: <span id="labelKappa">0.60</span></label>
+        <input id="kappa" type="range" min="0.1" max="1.0" step="0.01" value="0.60">
+      </div>
+      <div class="control">
+        <label>Rauschen σ: <span id="labelSigma">0.012</span></label>
+        <input id="sigma" type="range" min="0.002" max="0.05" step="0.001" value="0.012">
+      </div>
+      <div class="control">
+        <label>News-Wahrscheinlichkeit: <span id="labelNews">0.003</span></label>
+        <input id="newsProb" type="range" min="0" max="0.02" step="0.001" value="0.003">
+      </div>
+      <div class="row">
+        <button id="run">▶︎ Start</button>
+        <button id="step">⏯ Step</button>
+        <button id="reset">⟲ Reset</button>
+      </div>
+      <div class="row">
+        <button id="goodNews">💚 Positive News</button>
+        <button id="badNews">💔 Negative News</button>
+        <button id="panic">⚠️ Panik</button>
+      </div>
+      <div class="legend">
+        <div><span class="dot bull"></span>gierig</div>
+        <div><span class="dot bear"></span>ängstlich</div>
+        <div><span class="dot neutral"></span>neutral</div>
+      </div>
+    </section>
+
+    <section class="panel canvas-panel">
+      <h2>Preis (oben) und Agenten (unten)</h2>
+      <canvas id="priceCanvas" width="900" height="220"></canvas>
+      <canvas id="agentsCanvas" width="900" height="360"></canvas>
+      <div class="stats">
+        <span>Preis: <strong id="statPrice">–</strong></span>
+        <span>Ø-Stimmung: <strong id="statSent">–</strong></span>
+        <span>Orderflow: <strong id="statFlow">–</strong></span>
+        <span>Volatilität: <strong id="statVol">–</strong></span>
+        <span>T: <strong id="statT">0</strong></span>
+      </div>
+    </section>
+
+    <section class="panel help">
+      <h2>Wie lesen?</h2>
+      <p>Jeder Pixel unten ist ein Agent. Farbe = Stimmung (rot = Angst, grün = Gier).
+         Oben siehst du die Preis-Zeitreihe. Hoher <em>h</em> erzeugt lange Trends (Herding).
+         Höheres <em>ρ</em> dämpft Bewegungen. <em>κ</em> verstärkt den Preisimpact von Orderflow.</p>
+      <ul>
+        <li><b>Positive News</b>: kurzfristiger Stimmungs-Boost (Bubble-Risiko)</li>
+        <li><b>Negative News</b>: Stimmungs-Drop (Crash-Risiko)</li>
+        <li><b>Panik</b>: alle Sentiments fallen kurz ab</li>
+      </ul>
+      <p>Baustelle für dich: probiere Netzwerke, Influencer-Agents, oder andere Sentiment-Formeln.</p>
+      <p class="foot">MIT License • Code by you ✦</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

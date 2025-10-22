@@ -1,0 +1,39 @@
+/* Minimal pixel aesthetic */
+:root{
+  --bg: #0e0e11;
+  --panel: #15161b;
+  --text: #e8e8ef;
+  --muted:#9aa0a6;
+  --accent:#8ee3a6;
+  --danger:#ff6b6b;
+  --border:#23242a;
+  --yellow:#ffd166;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background: var(--bg); color: var(--text);
+}
+.topbar{padding:16px 20px; border-bottom:1px solid var(--border); background:#0c0d10; position:sticky; top:0; z-index:9}
+.topbar h1{margin:0; font-size:20px; letter-spacing:.3px}
+.topbar .sub{color:var(--muted); font-size:12px; margin-top:4px}
+.grid{display:grid; grid-template-columns:320px 1fr; gap:14px; padding:14px}
+.panel{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:0 1px 0 rgba(255,255,255,0.03) inset}
+.panel h2{margin:0 0 10px 0; font-size:14px; color:#cfd3da; letter-spacing:.3px}
+.controls .control{margin:10px 0}
+.controls label{display:block; font-size:12px; color:var(--muted); margin-bottom:4px}
+.controls input[type=range]{width:100%}
+.row{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+button{background:#1f2128; color:var(--text); border:1px solid var(--border); padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:600}
+button:hover{border-color:#3a3d48}
+.legend{display:flex; gap:10px; margin-top:10px; font-size:12px; color:var(--muted)}
+.dot{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:middle; border:1px solid var(--border)}
+.dot.bull{background:#1ea45d}
+.dot.bear{background:#b64747}
+.dot.neutral{background:#777}
+.canvas-panel canvas{display:block; width:100%; image-rendering: pixelated; border:1px solid var(--border); border-radius:10px; background:#0a0b0e}
+.canvas-panel canvas+canvas{margin-top:10px}
+.stats{display:flex; gap:14px; font-size:12px; color:var(--muted); padding-top:8px}
+.help p, .help ul{font-size:13px; line-height:1.4; color:#c9cdd5}
+.help ul{padding-left:18px}
+.foot{color:#7e8491; font-size:11px; margin-top:6px}
